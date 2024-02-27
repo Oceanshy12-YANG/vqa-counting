@@ -39,7 +39,7 @@ def main():
         path = config.preprocessed_trainval_path
     else:
         path = config.preprocessed_test_path
-    with h5py.File(path, libver='latest') as fd:
+    with h5py.File(path, 'w', libver='latest') as fd:
         features = fd.create_dataset('features', shape=features_shape, dtype='float32')
         boxes = fd.create_dataset('boxes', shape=boxes_shape, dtype='float32')
         coco_ids = fd.create_dataset('ids', shape=(features_shape[0],), dtype='int32')
