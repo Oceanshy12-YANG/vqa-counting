@@ -65,7 +65,7 @@ def main():
             widths[i] = int(item['image_w'])
             heights[i] = int(item['image_h'])
 
-            buf = base64.decodestring(item['features'].encode('utf8'))
+            buf = base64.b64decode(item['features'].encode('utf8'))
             array = np.frombuffer(buf, dtype='float32')
             array = array.reshape((-1, config.output_features)).transpose()
             features[i, :, :array.shape[1]] = array
