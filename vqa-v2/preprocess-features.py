@@ -70,7 +70,7 @@ def main():
             array = array.reshape((-1, config.output_features)).transpose()
             features[i, :, :array.shape[1]] = array
 
-            buf = base64.decodestring(item['boxes'].encode('utf8'))
+            buf = base64.b64decode(item['boxes'].encode('utf8'))
             array = np.frombuffer(buf, dtype='float32')
             array = array.reshape((-1, 4)).transpose()
             boxes[i, :, :array.shape[1]] = array
